@@ -15,6 +15,14 @@
   </properties>
   <build>
     <plugins>
+      <plugin>  
+        <groupId>org.apache.maven.plugins</groupId>  
+        <artifactId>maven-compiler-plugin</artifactId>  
+        <configuration>  
+          <source>1.7</source>  
+          <target>1.7</target>  
+        </configuration>  
+      </plugin> 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -96,17 +104,17 @@
     <dependency>
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-streaming_2.10</artifactId>
-      <version>1.0.2</version>
+      <version>1.3.1</version>
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-streaming-kafka_2.10</artifactId>
-      <version>1.0.2</version>
+      <version>1.3.1</version>
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-core_2.10</artifactId>
-      <version>1.0.2</version>
+      <version>1.3.1</version>
       <exclusions>
         <exclusion>
           <groupId>commons-httpclient</groupId>

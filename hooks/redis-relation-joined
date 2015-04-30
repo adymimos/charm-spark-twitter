@@ -1,0 +1,31 @@
+#!/bin/sh
+###
+#  WARNING: this is a temporary dummy interface for the demo.jujucharms.com GUI. Doesn't do anything. 
+###
+
+set -ex
+HOME=$PWD
+. ${HOME}/hooks/common.sh
+
+juju-log "$JUJU_REMOTE_UNIT joined"
+
+#REDIS_APP_HOST="`relation-get private-address $JUJU_REMOTE_UNIT`"
+#REDIS_APP_PORT="`relation-get port $JUJU_REMOTE_UNIT`"
+
+#if [ -z "$REDIS_APP_HOST" ] ; then
+#    juju-log "Remote unit not ready or private IP address unavailable. Exiting gracefully..."
+#    exit 0
+#fi
+
+#if [ -z "$REDIS_APP_PORT" ] ; then
+#    juju-log "Remote unit port not set. Assuming HTTP on port 8000"
+#    REDIS_APP_PORT="8000"
+#fi
+
+#REDIS_APP_URL="http\:\/\/"${REDIS_APP_HOST}"\:"${REDIS_APP_PORT}"\/${REDIS_APP_URI}"
+
+#sed -i s/^rts\.spark\.webserv.*/rts\.spark\.webserv\:\ "${REDIS_APP_URL}"/ ${CONFIG_FILE}
+
+${HOME}/hooks/config-changed
+
+exit 0

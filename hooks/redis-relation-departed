@@ -1,0 +1,18 @@
+#!/bin/sh
+###
+#  WARNING: this is a temporary dummy interface for the demo.jujucharms.com GUI. Doesn't do anything. 
+###
+
+set -ex
+HOME=$PWD
+. ${HOME}/hooks/common.sh
+
+juju-log "$JUJU_REMOTE_UNIT departed"
+
+#REDIS_APP_URL="REDIS_APP_URL\:REDIS_APP_PORT\/REDIS_APP_URI"
+
+#sed -i s/^rts\.spark\.webserv.*/rts\.spark\.webserv\:\ "${REDIS_APP_URL}"/ ${CONFIG_FILE}
+
+${HOME}/hooks/stop
+
+exit 0

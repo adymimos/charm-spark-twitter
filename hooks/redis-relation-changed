@@ -1,0 +1,15 @@
+#!/bin/bash
+###
+#  WARNING: this is a temporary dummy interface for the demo.jujucharms.com GUI. Doesn't do anything. 
+###
+
+set -ex
+HOME=$PWD
+. ${HOME}/hooks/common.sh
+
+juju-log "$JUJU_REMOTE_UNIT modified its settings"
+
+${HOME}/hooks/redis-relation-broken
+${HOME}/hooks/redis-relation-joined
+
+exit 0

@@ -1,0 +1,13 @@
+#!/bin/sh
+###
+#  WARNING: this is a temporary dummy interface for the demo.jujucharms.com GUI. Doesn't do anything. 
+###
+set -ex
+HOME=$PWD
+. ${HOME}/hooks/common.sh
+
+# sed -i s/^rts\.spark\.webserv.*/rts\.spark\.webserv\:\ "NODEJS_APP_URL"/ ${CONFIG_FILE}
+
+${HOME}/hooks/stop
+
+exit 0

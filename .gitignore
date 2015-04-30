@@ -1,3 +1,6 @@
+.bzr*
+.bzr
+*~
 .classpath
 .project
 *.iml

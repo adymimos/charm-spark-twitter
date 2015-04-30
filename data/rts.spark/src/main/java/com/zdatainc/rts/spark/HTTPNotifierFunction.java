@@ -35,15 +35,18 @@ class SendPostFunction
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(webserver);
         String content = String.format(
-            "{\"id\": \"%d\", "     +
-            "\"text\": \"%s\", "    +
+            "{\"auth_token\": \"YOUR_AUTH_TOKEN\", " +
+            "\"title\": \"%d\", "  +
+            "\"text\": \"%s\", " +
+            "\"moreinfo\": \"%s\", " +
             "\"pos\": \"%f\", "     +
             "\"neg\": \"%f\", "     +
             "\"score\": \"%s\" }",
             tweet._1(),
             tweet._2(),
-            tweet._3(),
-            tweet._4(),
+            tweet._2(),
+            tweet._3() * 100,
+            tweet._4() * 100,
             tweet._5());
 
         try
