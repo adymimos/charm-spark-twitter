@@ -4,12 +4,25 @@ set -ex
 HOME=$PWD
 . ${HOME}/hooks/common.sh
 
+SPARKBIN="/usr/lib/spark/bin/spark-submit"
+
 # XFACTOR=`date +%s | sha256sum | base64 | head -c 32 ; echo`
 # echo ${XFACTOR} | tee .current_topology
 
 juju-log "Deploying application to cluster with unique name sentiment-analysis-${XFACTOR}..."
 cd "${DEST_FOLDER}/${APPNAME}"
-[ -f ${JARFILE} ] && /usr/lib/spark/bin/spark-submit --class com.zdatainc.rts.spark.SentimentAnalysis --name "Twitter Sentiment Analys" --master yarn-client "${DEST_FOLDER}/${APPNAME}/target/rts.spark-0.0.1.jar" &
+
+while [ ! -f ${SPARKBIN} ] 
+do
+    sleep 15
+done
+
+while [ ! -f ${JARFILE} ] 
+do 
+    sleep 5
+done
+
+/usr/lib/spark/bin/spark-submit --class com.zdatainc.rts.spark.SentimentAnalysis --name "Twitter Sentiment Analys" --master yarn-client "${DEST_FOLDER}/${APPNAME}/target/rts.spark-0.0.1.jar" &
 ## [ -f ${JARFILE} ] && spark-submit --class com.zdatainc.rts.spark.SentimentAnalysis --name "Twitter Sentiment Analys" --master local 
 cd -
 
