@@ -163,34 +163,6 @@ At first run, Maven would not compile because of a Java versioning problem. This
 
 to the original pom.xml.
 
-## Include java-util
-
-While doing some testing on the Java file, we had to use java-util. This code is not used anymore but we kept the dependency just in case in the pom.xml file:
-
-    <dependency>
-      <groupId>com.cedarsoftware</groupId>
-      <artifactId>java-util</artifactId>
-      <version>1.12.0</version>
-      <scope>provided</scope>
-    </dependency>
-
-## Http Components Versioning
-
-This may be the root cause of the NodeNotifier not working. The Java Httpcomponents library has evolved a lot since this project was written. We had to update the versioning of the pom.xml file:
-
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpcore</artifactId>
-      <version>4.3.2</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.3.2</version>
-      <scope>provided</scope>
-    </dependency>
-
 ## Failure after a few days
 
 ZooKeeper nodes tend to fail after a few days if nothing is done. This is because ZK keeps logging information for ever and doesn't cleanup logs by default. This behavior can be changed by adding this to the crontab:
@@ -200,10 +172,6 @@ ZooKeeper nodes tend to fail after a few days if nothing is done. This is becaus
 Then restart the Cron service.
 
    root@hdp-zookeper:~$# service cron restart
-
-## Failure to store on HDFS
-
-The current status of the Charms to deploy Hortonworks Hadoop distribution prevent colocation of services, which is required for this example. This has been reported as a bug and shall be fixed soon.
 
 ## License ##
 

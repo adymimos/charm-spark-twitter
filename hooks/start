@@ -9,7 +9,7 @@ HOME=$PWD
 
 juju-log "Deploying application to cluster with unique name sentiment-analysis-${XFACTOR}..."
 cd "${DEST_FOLDER}/${APPNAME}"
-[ -f ${JARFILE} ] && /usr/lib/spark/bin/spark-submit --class com.zdatainc.rts.spark.SentimentAnalysis --name "Twitter Sentiment Analys" --master yarn-client "${DEST_FOLDER}/${APPNAME}/target/rts.spark-0.0.1.jar"
+[ -f ${JARFILE} ] && /usr/lib/spark/bin/spark-submit --class com.zdatainc.rts.spark.SentimentAnalysis --name "Twitter Sentiment Analys" --master yarn-client "${DEST_FOLDER}/${APPNAME}/target/rts.spark-0.0.1.jar" &
 ## [ -f ${JARFILE} ] && spark-submit --class com.zdatainc.rts.spark.SentimentAnalysis --name "Twitter Sentiment Analys" --master local 
 cd -
 
