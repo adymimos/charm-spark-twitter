@@ -12,17 +12,7 @@ SPARKBIN="/usr/lib/spark/bin/spark-submit"
 juju-log "Deploying application to cluster with unique name sentiment-analysis-${XFACTOR}..."
 cd "${DEST_FOLDER}/${APPNAME}"
 
-while [ ! -f ${SPARKBIN} ] 
-do
-    sleep 15
-done
-
-while [ ! -f ${JARFILE} ] 
-do 
-    sleep 5
-done
-
-/usr/lib/spark/bin/spark-submit --class com.zdatainc.rts.spark.SentimentAnalysis --name "Twitter Sentiment Analys" --master yarn-client "${DEST_FOLDER}/${APPNAME}/target/rts.spark-0.0.1.jar" &
+[ -f ${JARFILE} ] && [ -f ${SPARKBIN} ] && (/usr/lib/spark/bin/spark-submit --class com.zdatainc.rts.spark.SentimentAnalysis --name "Twitter Sentiment Analys" --master yarn-client "${DEST_FOLDER}/${APPNAME}/target/rts.spark-0.0.1.jar" &) || juju-log "Use juju run to start spark"
 ## [ -f ${JARFILE} ] && spark-submit --class com.zdatainc.rts.spark.SentimentAnalysis --name "Twitter Sentiment Analys" --master local 
 cd -
 
