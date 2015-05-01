@@ -1,0 +1,4 @@
+analysis:
+  description: Start the Tweet analysis
+stop-analysis:
+  description: Stop the Tweet analysis. Not implemented yet

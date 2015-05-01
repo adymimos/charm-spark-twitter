@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -ex
+HOME=$PWD
+. ${HOME}/hooks/common.sh
+SPARKBIN="/usr/lib/spark/bin/spark-submit"
+
+juju-log "Stopping Spark is still TBD"
+
+
+exit 0
+
