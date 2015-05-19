@@ -7,7 +7,7 @@ HOME=$PWD
 
 juju-log "Starting Installation"
 juju-log "Installing prerequisites"
-apt-get install -y -qq maven git
+#apt-get install -y -qq maven git
 
 juju-log "Copying latest charm files"
 ([ ! -d ${DEST_FOLDER} ] && mkdir -p ${DEST_FOLDER}) || rm -rf ${DEST_FOLDER}/*
@@ -16,7 +16,7 @@ cp -r data/* ${DEST_FOLDER}/
 
 juju-log "Generating new configuration file"
 [ -f ${CONFIG_FILE} ] && mv ${CONFIG_FILE} ${CONFIG_FILE}.bak
-cp ${CONFIG_FILE}.template ${CONFIG_FILE}
+cp "$DEST_FOLDER/${CONFIG_FILE_NAME}" ${CONFIG_FILE} 
 
 juju-log "Installation finished"
 

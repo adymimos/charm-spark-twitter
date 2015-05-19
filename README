@@ -1,4 +1,4 @@
-# Spark Sample Project #
+# Spark Sample Project
 
 This is a set of projects for demonstrating and testing an architecture mixing Kafka, Hadoop, Spark, Redis and node.js by performing Twitter sentiment analysis.
 
@@ -27,12 +27,18 @@ The below instruction will however explain how to use it in a non automated envi
 
 # Spark Installation 
 
-TBD
+There are 3 options to install Spark with Juju, all of them being represented in the [GitHub repo](https://github.com/SaMnCo/bundle-sentiment-analysis)
+
+* As a standalone
+* As a standalone with a HDFS storage backend
+* Through YARN with a subordinate charm
 
 # Running the project
 ## Starting all elements
 
 1. Start the Kafka Server (Broker)
+
+The below covers the tasks you'd have to do without a charm and bundle. You don't actually have to do them when using Juju. 
 
   1.1. Manually
 
@@ -137,15 +143,29 @@ As you can see, each log batch is 512MB then it gets rotated. However the old lo
 
 3.1. Manually
 
-TBD
+3.1.1. As a Standalone
 
-3.2 As a service
+First connect on the Spark Master node: 
 
-TBD
+    juju ssh spark-master/0
 
-# Editing the code
+Now send the jar file to the cluster
 
-TBD
+    spark-submit --class com.zdatainc.rts.spark.SentimentAnalysis --name "Twitter Sentiment Analys" --master local "/var/lib/juju/agent/unit-spark-twitter-0/data/rts.spark-0.0.1.jar"
+
+If you have juju > 1.23, you can also use juju actions
+
+3.1.2 Through YARN
+
+First connect on the Client node: 
+
+    juju ssh hadoop-client/0
+
+Now send the jar file to the cluster
+
+    spark-submit --class com.zdatainc.rts.spark.SentimentAnalysis --name "Twitter Sentiment Analys" --master yarn-client "/var/lib/juju/agent/unit-spark-twitter-0/data/rts.spark-0.0.1.jar/target/rts.spark-0.0.1.jar"
+
+If you have juju > 1.23, you can also use juju actions
 
 # Troubleshooting / FAQ
 ## Including Java version

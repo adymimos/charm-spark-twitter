@@ -15,10 +15,10 @@ then
   exit 0
 fi
 
-juju-log "Compiling Spark Application..."
-cd "${DEST_FOLDER}/${APPNAME}"
-mvn package
-cd -
+#juju-log "Compiling Spark Application..."
+#cd "${DEST_FOLDER}/${APPNAME}"
+#mvn package
+#cd -
 
 juju-log "Do not forget to add a relation with a Zookeeper and the Node.js application server for normal behavior"
 juju-log "Configuration done. Moving to next stage"

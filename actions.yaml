@@ -1,4 +1,7 @@
-analysis:
+analysis-yarn:
   description: Start the Tweet analysis
 stop-analysis:
   description: Stop the Tweet analysis. Not implemented yet
+analysis-standalone:
+  description: Start the Tweet analysis in Standalone mode
+

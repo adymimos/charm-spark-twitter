@@ -11,7 +11,7 @@ provides:
     interface: spark-twitter
 requires:
   master:
-    interface: monitor
+    interface: spark
     scope: container
   db:
     interface: redis
